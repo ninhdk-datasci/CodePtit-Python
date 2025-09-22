@@ -1,13 +1,21 @@
+from math import *
+
 def check(s): 
-    for c in s: 
-        if int(c) % 2 != 0: return False
-    unique = set(list(s)) 
-    return len(unique) % 2 == 1  and s == s[::-1]
+    unique = set(s)
+    return len(unique) % 2 == 1  
 
 
 t = int(input()) 
 
 for _ in range(t): 
-    num = input() 
+    num = int(input())
 
-    print(check(num))
+    res =  []
+    for i in range(2, 999+1, 2): 
+        res.append(str(i) + str(i)[::-1]) 
+    
+    for i in res: 
+        if int(i) >= num: 
+            continue
+        if check(i) :print(i, end=' ')
+    print()
